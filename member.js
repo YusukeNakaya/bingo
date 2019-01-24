@@ -108,5 +108,5 @@ var memberData = [
   { id: "107", name: "bag" },
   { id: "108", name: "bah" },
   { id: "109", name: "bai" },
-  { id: "110", name: "baj" },
+  { id: "110", name: "baj" }
 ]

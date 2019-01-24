@@ -11,6 +11,9 @@
       memberList = [],
       offList = [],
       memberCount = 0,
+      count3 = 0,
+      count2 = 0,
+      count1 = 0,
       loadedCount = 0,
       photoScale = 5,
       photoWidth = 100 * photoScale,
@@ -69,7 +72,10 @@
     }
 
     function initContent() {
-      lockFlg = true
+      count3 = Math.floor(memberCount * 0.8);
+      count2 = Math.floor(memberCount * 0.6);
+      count1 = Math.floor(memberCount * 0.3);
+      lockFlg = true;
       memberList = [];
 
       // リストを生成
@@ -190,7 +196,7 @@
             setLog(offList)
 
             // COUNT 3
-            for (i = 0; i < memberCount - 100; i++) {
+            for (i = 0; i < memberCount - count2; i++) {
               memberList[i].velocity({
                 translateZ: leaveDistance,
                 opacity: opacity
@@ -216,7 +222,7 @@
               // ドラムロール
               $drum.currentTime = 0;
 
-              for (i = memberCount - 100; i < memberCount - 30; i++) {
+              for (i = memberCount - count2; i < memberCount - count1; i++) {
                 memberList[i].velocity({
                   translateZ: leaveDistance,
                   opacity: opacity
@@ -230,7 +236,7 @@
               $("p").velocity({
                 fontSize: 900
               }, {
-                elay: (i - 50) * leaveDelay,
+                delay: (i - 50) * leaveDelay,
                 duration: duration,
                 easing: easing,
                 begin: function() {
@@ -244,13 +250,13 @@
               // ドラムロール
               $drum.currentTime = 0;
 
-              for (i = memberCount - 30; i < memberCount - 10; i++) {
+              for (i = memberCount - count1; i < memberCount - 10; i++) {
                 memberList[i].velocity({
                   translateZ: leaveDistance,
                   opacity: opacity
                 }, {
                   queue: false,
-                  delay: (i - 80) * leaveDelay,
+                  delay: (i - count3) * leaveDelay,
                   duration: duration,
                   easing: easing
                 });
@@ -258,7 +264,7 @@
               $("p").velocity({
                 fontSize: 900
               }, {
-                delay: (i - 80) * leaveDelay,
+                delay: (i - count3) * leaveDelay,
                 duration: duration,
                 easing: easing,
                 begin: function() {
@@ -405,7 +411,7 @@
             setLog(offList)
 
             // COUNT 2
-            for (i = 0; i < memberCount - 80; i++) {
+            for (i = 0; i < memberCount - count2; i++) {
               memberList[i].velocity({
                 translateZ: leaveDistance,
                 opacity: opacity
@@ -426,12 +432,12 @@
               }
             });
 
-            // COUNT 2
+            // COUNT 1
             window.setTimeout(function() {
               // ドラムロール
               $drum.currentTime = 0;
 
-              for (i = memberCount - 80; i < memberCount - 20; i++) {
+              for (i = memberCount - count2; i < memberCount - count1; i++) {
                 memberList[i].velocity({
                   translateZ: leaveDistance,
                   opacity: opacity
@@ -454,12 +460,12 @@
               });
             }, countDelay);
 
-            // COUNT 1
+            // BINGO
             window.setTimeout(function() {
               // ドラムロール
               $drum.currentTime = 0;
 
-              for (i = memberCount - 20; i < memberCount - selectKey; i++) {
+              for (i = memberCount - count1; i < memberCount - selectKey; i++) {
                 memberList[i].velocity({
                   translateZ: leaveDistance,
                   opacity: opacity
